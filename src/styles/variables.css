@@ -1,0 +1,216 @@
+/* ==========================================================================
+   ASWENNA — DESIGN TOKENS
+   --------------------------------------------------------------------------
+   Every colour, radius, spacing and type token the site uses lives here.
+   Change a value in this file and it updates everywhere on the landing page.
+   Palette source: AgroIntel Sri Lanka / Aswenna brand sheet.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------- 
+     1. BRAND COLOURS  (the four base colours from the brand sheet)
+     ---------------------------------------------------------------- */
+  --brand-primary:   #1D4E2B;  /* deep forest green  */
+  --brand-secondary: #4B5E70;  /* slate blue-grey    */
+  --brand-tertiary:  #2F7C47;  /* field green        */
+  --brand-neutral:   #111827;  /* near-black ink     */
+
+  /* ---------------------------------------------------------------- 
+     2. BRAND RAMPS  (tints + shades generated from the four above)
+     ---------------------------------------------------------------- */
+  /* Primary — deep forest green */
+  --primary-50:  #EFF6F1;
+  --primary-100: #D8E9DE;
+  --primary-200: #B2D3BE;
+  --primary-300: #8ABC9C;
+  --primary-400: #5E9E77;
+  --primary-500: #3C7F56;
+  --primary-600: #2A653F;
+  --primary-700: #1D4E2B;
+  --primary-800: #163C21;
+  --primary-900: #0E2715;
+  --primary-950: #07160C;
+
+  /* Secondary — slate blue-grey */
+  --secondary-50:  #F2F5F8;
+  --secondary-100: #E2E8EF;
+  --secondary-200: #C6D1DD;
+  --secondary-300: #A3B3C4;
+  --secondary-400: #8094A9;
+  --secondary-500: #64798F;
+  --secondary-600: #4B5E70;
+  --secondary-700: #3C4B5A;
+  --secondary-800: #2C3845;
+  --secondary-900: #1D2530;
+  --secondary-950: #11171F;
+
+  /* Tertiary — field green */
+  --tertiary-50:  #EFF8F2;
+  --tertiary-100: #D6EFDF;
+  --tertiary-200: #ADDEC0;
+  --tertiary-300: #7FC89B;
+  --tertiary-400: #55AF77;
+  --tertiary-500: #2F7C47;
+  --tertiary-600: #296D3E;
+  --tertiary-700: #215833;
+  --tertiary-800: #1A4428;
+  --tertiary-900: #12301C;
+
+  /* Neutral — ink + greys */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F8FAFC;
+  --neutral-100: #F1F5F9;
+  --neutral-200: #E2E8F0;
+  --neutral-300: #CBD5E1;
+  --neutral-400: #94A3B8;
+  --neutral-500: #55627A;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1F2937;
+  --neutral-900: #111827;
+
+  /* ---------------------------------------------------------------- 
+     3. SEMANTIC COLOURS  (what the components actually reference)
+     ---------------------------------------------------------------- */
+  --color-bg:              #F6F8FB;  /* page background            */
+  --color-bg-alt:          #EDF1F8;  /* banded / lavender sections */
+  --color-surface:         var(--neutral-0);
+  --color-surface-muted:   #E9EEF7;  /* soft card fill             */
+  --color-surface-sunken:  var(--neutral-50);
+
+  --color-text:            var(--neutral-900);
+  --color-text-soft:       var(--neutral-600);
+  --color-text-muted:      var(--neutral-500);
+  --color-text-inverse:    var(--neutral-0);
+  --color-text-on-primary: #E7F2EA;
+
+  --color-border:          #E3E9F2;
+  --color-border-strong:   var(--neutral-300);
+  --color-border-accent:   var(--primary-200);
+
+  --color-accent:          var(--brand-primary);
+  --color-accent-hover:    var(--primary-600);
+  --color-accent-soft:     var(--primary-50);
+  --color-accent-ring:     rgba(29, 78, 43, 0.18);
+
+  --color-highlight:       var(--brand-tertiary);
+  --color-highlight-soft:  var(--tertiary-50);
+
+  /* Translucent veils for banded sections, so the background texture reads through */
+  --color-band-veil: rgba(255, 255, 255, 0.72);
+  --color-alt-veil:  rgba(237, 241, 248, 0.68);
+
+  /* ---------------------------------------------------------------- 
+     3b. INTERACTIVE BACKGROUND — the sensor mesh
+     A field of drifting nodes linked to their neighbours, drawn on a
+     canvas behind the page. The cursor acts as a gateway: nodes near it
+     wake up, lean towards it and link to it.
+
+     Colours are given as "R, G, B" triplets because the canvas composes
+     them with its own alpha values at runtime.
+     ---------------------------------------------------------------- */
+  --mesh-node-rgb:   29, 78, 43;    /* resting nodes            */
+  --mesh-link-rgb:   47, 124, 71;   /* links between neighbours */
+  --mesh-active-rgb: 47, 124, 71;   /* nodes + links near cursor */
+  --mesh-glow-rgb:   47, 124, 71;   /* the wash under the cursor */
+
+  --mesh-node-alpha:   0.38;  /* opacity of a resting node          */
+  --mesh-link-alpha:   0.26;  /* opacity of a neighbour link        */
+  --mesh-active-alpha: 0.85;  /* opacity of a woken node            */
+  --mesh-glow-alpha:   0.14;  /* strength of the cursor glow        */
+
+  --mesh-density:   15000;  /* px² of viewport per node (lower = more) */
+  --mesh-link-dist: 146;    /* px: how close two nodes link            */
+  --mesh-reach:     265;    /* px: how far the cursor wakes nodes      */
+  --mesh-pull:      20;     /* px: how far a node leans towards it     */
+  --mesh-pulse-ms:  1500;   /* ms between node "transmission" pulses   */
+
+  /* The photograph behind the whole page, under the mesh.
+     The scrim keeps the page light enough for dark body text to stay
+     readable over it — raise its alpha to hide the photo further,
+     lower it to let more through. */
+  --bg-photo:      url("/images/photos/page-backdrop.webp");
+  --bg-photo-tint: 246, 248, 251;  /* the scrim colour, matching --color-bg */
+
+  /* The scrim is eased between these two as the page scrolls: the photograph
+     reads as a banner behind the hero, then settles to a whisper of texture
+     once body copy is on screen, which keeps small text above WCAG AA.
+     Raise either value to hide the photo further; lower it to show more. */
+  --bg-photo-scrim-top:  0.30;  /* at the top of the page   */
+  --bg-photo-scrim-body: 0.80;  /* once scrolled into the content */
+  --bg-photo-scrim:      var(--bg-photo-scrim-top);  /* set from JS while scrolling */
+
+  /* The faint static grid behind the mesh */
+  --texture-size: 26px;
+  --texture-dot:  rgba(29, 78, 43, 0.055);
+
+  /* Status colours used by data-transparency chips and alerts */
+  --color-info:    var(--brand-secondary);
+  --color-info-bg: var(--secondary-100);
+  --color-warn:    #B45309;
+  --color-warn-bg: #FEF3C7;
+  --color-live:    var(--brand-tertiary);
+  --color-live-bg: var(--tertiary-100);
+
+  /* ---------------------------------------------------------------- 
+     4. TYPOGRAPHY
+     ---------------------------------------------------------------- */
+  --font-heading: "Plus Jakarta Sans", "Noto Sans Sinhala", "Noto Sans Tamil", "Inter", system-ui, sans-serif;
+  --font-body:    "Inter", "Noto Sans Sinhala", "Noto Sans Tamil", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --leading-tight: 1.15;
+  --leading-snug:  1.35;
+  --leading-body:  1.65;
+  --tracking-tight: -0.025em;
+  --tracking-wide:  0.08em;
+
+  /* ---------------------------------------------------------------- 
+     5. LAYOUT / SHAPE / MOTION
+     ---------------------------------------------------------------- */
+  --container-width: 1200px;
+  --container-narrow: 820px;
+  --gutter: 24px;
+
+  --section-gap:      clamp(64px, 9vw, 128px);
+  --section-gap-tight: clamp(48px, 6vw, 80px);
+
+  --radius-xs:  6px;
+  --radius-sm:  10px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-2xl: 36px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(17, 24, 39, 0.05);
+  --shadow-sm: 0 2px 8px rgba(17, 24, 39, 0.06);
+  --shadow-md: 0 8px 24px rgba(17, 24, 39, 0.07);
+  --shadow-lg: 0 18px 44px rgba(17, 24, 39, 0.10);
+  --shadow-xl: 0 30px 70px rgba(17, 24, 39, 0.14);
+
+  --ring: 0 0 0 4px var(--color-accent-ring);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration: 280ms;
+  --duration-slow: 520ms;
+
+  --header-height: 76px;
+}

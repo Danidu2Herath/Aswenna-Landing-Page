@@ -1,0 +1,84 @@
+.footer {
+  background: var(--primary-950);
+  color: rgba(231, 242, 234, 0.72);
+  padding-top: 72px;
+  padding-bottom: 28px;
+  overflow: hidden;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__logo { display: inline-flex; align-items: center; gap: 12px; }
+.footer__logo img { border-radius: var(--radius-sm); }
+.footer__logo span { display: flex; flex-direction: column; line-height: 1.25; }
+.footer__logo strong {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: #fff;
+  letter-spacing: var(--tracking-tight);
+}
+.footer__logo em { font-style: normal; font-size: var(--text-xs); color: rgba(231, 242, 234, 0.6); }
+
+.footer__blurb { margin-top: 20px; max-width: 48ch; font-size: var(--text-sm); }
+.footer__tagline {
+  margin-top: 16px;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold);
+  color: var(--tertiary-300);
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+}
+
+.footer__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.footer__col h3 {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: #fff;
+}
+.footer__col ul { margin-top: 16px; display: grid; gap: 11px; }
+.footer__col a { font-size: var(--text-sm); transition: color var(--duration-fast) var(--ease); }
+.footer__col a:hover { color: #fff; }
+
+.footer__note {
+  margin-top: 28px;
+  font-size: var(--text-xs);
+  color: rgba(231, 242, 234, 0.5);
+  max-width: 86ch;
+}
+
+.footer__bottom {
+  margin-top: 36px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: var(--text-xs);
+}
+
+.footer__wordmark {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: clamp(3rem, 11vw, 9rem);
+  line-height: 0.78;
+  letter-spacing: var(--tracking-tight);
+  color: rgba(255, 255, 255, 0.06);
+  user-select: none;
+  margin-bottom: -0.14em;
+}
+
+@media (max-width: 900px) {
+  .footer__top { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+}
+@media (max-width: 560px) {
+  .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+}

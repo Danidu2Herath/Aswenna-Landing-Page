@@ -1,0 +1,39 @@
+.phone { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+.phone__frame {
+  position: relative;
+  width: 100%;
+  max-width: 272px;
+  padding: 10px;
+  border-radius: 42px;
+  background: linear-gradient(160deg, var(--neutral-800), var(--neutral-900));
+  box-shadow: var(--shadow-xl), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.phone__notch {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86px;
+  height: 20px;
+  border-radius: var(--radius-pill);
+  background: var(--neutral-900);
+  z-index: 2;
+}
+
+.phone__screen {
+  width: 100%;
+  height: auto;
+  border-radius: 32px;
+  background: var(--color-bg);
+  display: block;
+}
+
+.phone__caption {
+  font-size: var(--text-xs);
+  /* Soft, not muted: at 12px over the photographic backdrop the muted grey
+     lands just under WCAG AA. */
+  color: var(--color-text-soft);
+  text-align: center;
+}
